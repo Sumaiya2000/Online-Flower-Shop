@@ -76,6 +76,17 @@ const getUser= asyncHandler(async(req, res) => {
         contact 
     })
 })
+const updateUser= asyncHandler(async(req, res) => {
+    const user =await User.findById(req.user.id)
+    if(!user) {
+        res.status(400)
+        throw new Error("User not found")
+    }
+
+    const updatedUser=await User.findByIdAndUpdate(req.params.id, req.body, {new: true,})
+    res.status(200).json(updatedUser)
+    
+})
 
 const generateToken=(id)=>{
     return jwt.sign({id}, process.env.JWT_SECRET, {
@@ -88,5 +99,6 @@ module.exports = {
     registerUser,
     loginUser,
     getUser,
+    updateUser
     
 }

@@ -11,19 +11,31 @@ const getItems=asyncHandler(async(req, res) => {
 })
 // PROBLEM FOR EACH ELEMENT IN OBJECT 
 const confirmOrder=asyncHandler(async(req, res) => {
-    const user= req.body.id
-    const {pid,name,quantity,price}= await Cart.find({user:user})
-    const product= {pid,name,quantity,price}
-    /* const product= await Order.create({
-        pid: pid, 
+    const user= req.user.id
+    const items= await Cart.find({user:user})
+    const order= new Array()
+    let sum= 0
+    for (let i = 0; i < items.length; i++) {
+       const item = {
+        pid: items[i].pid,
+        name: items[i].name,
+        price: items[i].price,
+        quantity: items[i].quantity
+       };
+       sum+= items[i].price*items[i].quantity
+       order.push(item)
+    }
+    
+    const product= await Order.create({
+        items: order,
         user: user,
-        time: date.toLocaleDateString('en-US'), 
-        name: name, 
-        quantity: quantity, 
-        price: price,
+        time: new Date().toLocaleDateString('en-US'),
+        total: sum
       }     
-    ) */
-    res.json({success:true, product})
+    )
+    for (let i = 0; i < items.length; i++) {
+    await Cart.findOneAndDelete({user:user})}
+    res.json({success:true,product})
 
 })
 const updateItem=asyncHandler(async(req, res) =>{
