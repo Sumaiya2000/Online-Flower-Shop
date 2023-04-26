@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
+<<<<<<< HEAD
     "client": "npm start --prefix client",
+=======
+    "client": "npm start --prefix frontend",
+>>>>>>> b9977a81b1f2975b3a560832f7c3801ef40d131a
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Sumaiya",
