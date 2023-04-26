@@ -5,7 +5,7 @@ const flowerSchema=mongoose.Schema({
             type: String,
             required: true
         },
-        uri:{
+        url:{
             type: String,
             required: true
         }

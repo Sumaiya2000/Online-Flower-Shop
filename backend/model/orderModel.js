@@ -1,17 +1,9 @@
 const mongoose = require('mongoose')
 const orderSchema=mongoose.Schema({
-    pid: {
+    items: [{pid: {
         type: String,
-        required: true
     }, 
-    user: {
-        type: String,
-        required: true
-    },
-    time: {
-        type: String,
-        required: true
-    },
+    
     quantity: {
         type: Number,
         required: [true,1]
@@ -23,6 +15,18 @@ const orderSchema=mongoose.Schema({
     price:{
         type: Number,
         required: [true, 'Unavailable']
+    },}],
+    user: {
+        type: String,
+        required: true
     },
+    time: {
+        type: String,
+        required: true
+    },
+    total:{
+        type: Number,
+        required: true
+    }
 })
 module.exports= mongoose.model('Order',orderSchema)

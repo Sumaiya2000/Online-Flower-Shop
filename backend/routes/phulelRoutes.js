@@ -3,32 +3,35 @@ const { deleteItem, updateItem,getItems,confirmOrder } = require('../controllers
 
 const router=express.Router()
 const{getFools,postFools,updateFools,deleteFools,getCat,getOcc, addtoCart,getCatn,getFoolsn,getOccn} =require('../controllers/phulelController')
+const { getReview, postReview } = require('../controllers/reviewController')
 
 module.exports = router
 
 
 const {protect} =require('../middleware/authMiddleware')
-router.get('/products', protect,getFools)
+router.get('/products',getFools)
 
-router.post('/create',protect,postFools)
+router.post('/create',postFools)
 
-router.put('/test/:id',protect,updateFools)
-router.delete('/test/:id',protect,deleteFools)
+router.put('/test/:id',updateFools)
+router.delete('/test/:id',deleteFools)
 
 
-router.get('/Categories/:category',protect,getCat)
-router.get('/Occasions/:occasion',protect,getOcc)
-router.get('/Cart',protect,getItems)
-router.post('/Cart/:pid',protect,addtoCart)
-router.put('/Cart/update/:pid',protect,updateItem)
-router.delete('/Cart/delete/:pid',protect,deleteItem)
-router.post('/Cart/confirm/order',protect,confirmOrder)
+router.get('/categories/:category',protect,getCat)
+router.get('/occasions/:occasion',protect,getOcc)
+router.get('/cart',protect,getItems)
+router.post('/cart/:pid',protect,addtoCart)
+router.put('/cart/update/:pid',protect,updateItem)
+router.delete('/cart/delete/:pid',protect,deleteItem)
+router.post('/cart/confirm/order',protect,confirmOrder)
+router.post('/engage', protect,postReview)
+router.get('/engage', protect,getReview)
 
 //not user
 
-router.get('/notuser/products', protect,getFoolsn)
-router.get('/notuser/Categories/:category',protect,getCatn)
-router.get('/notuser/Occasions/:occasion',protect,getOccn)
+/* router.get('/notuser/products', protect,getFoolsn)
+router.get('/notuser/categories/:category',protect,getCatn)
+router.get('/notuser/occasions/:occasion',protect,getOccn) */
 
 
 
