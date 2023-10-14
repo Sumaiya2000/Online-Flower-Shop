@@ -1,5 +1,4 @@
-**Phulel - Online Flower Delivery Shop**
-Phulel is an online flower delivery web application designed to provide a seamless and delightful shopping experience for customers looking to purchase a variety of flowers.
+**Phulel - Online Flower Delivery Shop** : Phulel is an online flower delivery web application designed to provide a seamless and delightful shopping experience for customers looking to purchase a variety of flowers.
 
 **Key Features:**
 * User-Friendly Interface:
